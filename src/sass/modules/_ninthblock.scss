@@ -1,0 +1,72 @@
+.ninthblock{
+    background: url('../../image/bg4.png');
+    height: 370px;
+    padding-top: 60px;
+    margin-top: 60px;
+    &__form{
+        width: 896px;
+        height: 229px;
+        background-color: #ffffff;
+        opacity: 0.7;
+        margin: 0 auto;
+        position: relative;
+        form{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        input{
+            width: 240px;
+            height: 45px;
+            border: 1px solid rgba(0, 0, 0, 0.21);
+            background-color: #ffffff;
+            border-radius: 24px;
+            padding-left: 25px;
+        }
+        &-input{
+            padding-top: 20px;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        &-button{
+            margin-top: 10px;
+            position: absolute;
+            left: 355px;
+        }
+        
+    }
+    &__header{
+        margin: 0 auto;
+        width: 896px;
+        height: 68px;
+        background-color: #25333c;
+        opacity: 1;
+        p{
+            padding-top: 20px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 400;
+            font-style: normal;
+            letter-spacing: normal;
+            text-align: center;
+            text-transform: uppercase;
+            span{
+                color: #ffffff;
+                font-size: 19px;
+                font-weight: 700;
+                font-style: normal;
+                letter-spacing: normal;
+                text-align: center;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+#textarea{
+    margin-top: 10px;
+    width: 813px;
+    height: 71px;
+    border: 1px solid rgba(0, 0, 0, 0.21);
+    background-color: #ffffff;
+}

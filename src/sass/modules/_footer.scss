@@ -1,0 +1,85 @@
+.footer{
+    background-color: #25333c;
+    height: 201px;
+    &__up{
+        padding-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        &-text{
+            margin-top: 32px;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 400;
+            font-style: normal;
+            letter-spacing: normal;
+            line-height: 16.71px;
+            text-align: left;
+            margin-right: 290px;
+        }
+        &-contact{
+            &_text{
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 300;
+                font-style: normal;
+                letter-spacing: normal;
+                line-height: 24px;
+                text-align: right;
+            }
+            &_phone{
+                width: 161px;
+                height: 19px;
+                color: #ffffff;
+                font-size: 19px;
+                font-weight: 700;
+                font-style: normal;
+                letter-spacing: normal;
+                line-height: 24px;
+                text-align: right;
+            }
+        }
+        &__button{
+            margin-top: 25px;
+        }
+    }
+
+    &__divider{
+        width: 1171px;
+        height: 1px;
+        opacity: 0.3;
+        background-color: white;
+        margin-top: 10px;
+    }
+    &__down{
+        height: 50px;
+        position: relative;
+        &-text{
+            position: absolute;
+            width: 136px;
+            height: 10px;
+            opacity: 0.6;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 300;
+            font-style: normal;
+            letter-spacing: normal;
+            line-height: 17px;
+            text-align: center;
+            top: 50px;
+        }
+        &-link{
+            position: absolute;
+            color: #ec644b;
+            font-size: 13px;
+            font-weight: 300;
+            font-style: normal;
+            letter-spacing: normal;
+            line-height: 17px;
+            text-align: center;
+            text-decoration: underline;
+            top: 30px;
+            left: 400px;
+        }
+    }
+
+}

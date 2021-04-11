@@ -1,0 +1,23 @@
+.button{
+    width: 160px;
+    height: 45px;
+    border-radius: 22px;
+    background-color: #ec644b;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    font-style: normal;
+    letter-spacing: normal;
+    line-height: normal;
+    outline: none;
+    &-big{
+        width: 230px;
+        height: 57px;   
+    }
+    &-medium{
+        width: 180px;
+        height: 45px;
+    }
+}

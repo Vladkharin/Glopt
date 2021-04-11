@@ -1,0 +1,49 @@
+.eighthblock{
+    padding-top: 50px;
+    &__slider{
+        margin-top: 20px;
+        position: relative;
+        &-block{
+            display: none;
+            &_header{
+                color: #3a3a3a;
+                font-size: 18px;
+                font-weight: 700;
+                margin-top: 20px;
+            }
+            &_text{
+                margin-top: 10px;
+                font-size: 14px;
+                font-weight: 300;
+                color: #3a3a3a;
+                text-align: center;
+                max-width: 595px;
+                line-height: 22px;
+            }
+        }
+    }
+}
+
+.active{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#next{
+    position: absolute;
+    top: 25px;
+    left: 650px;
+    border: none;
+    background:#ffffff;
+    outline: none;
+}
+
+#prev{
+    position: absolute;
+    top: 25px;
+    right: 650px;
+    border: none;
+    background:#ffffff;
+    outline: none;
+}

@@ -1,0 +1,32 @@
+.sixthblock{
+    background: url('../../image/bg2.png');
+    width: 1920px;
+    height: 342px;
+    margin-top: 80px;
+    &__info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+        &-header{
+            margin-top: 20px;
+            color:white;
+            font-size: 26px;
+            font-weight: 700;
+            font-style: normal;
+            letter-spacing: normal;
+            line-height: 23px;
+            text-align: center;
+        }
+        &-text{
+            margin-top: 20px;
+            color: #ffffff;
+            font-size: 19px;
+            font-weight: 300;
+            font-style: normal;
+            letter-spacing: normal;
+            line-height: 27px;
+            text-align: center;
+        }
+    }
+}

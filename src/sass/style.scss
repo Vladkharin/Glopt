@@ -1,0 +1,26 @@
+@import './modules/firstblock.scss';
+@import './modules/secondblock.scss';
+@import './modules/thirdblock.scss';
+@import './modules/fourthblock.scss';
+@import './modules/fifthblock.scss';
+@import './modules/sixthblock.scss';
+@import './modules/seventhblock.scss';
+@import './modules/eighthblock.scss';
+@import './modules/ninthblock.scss';
+@import './modules/tenthblock.scss';
+@import './modules/footer';
+@import './modules/title';
+@import './modules/button.scss';
+
+.container{
+    margin: 0 auto;
+    width: 1140px;   
+}
+
+body{
+    margin: 0;
+}
+
+html{
+    margin-top: -8px;
+}

@@ -1,0 +1,40 @@
+.seventhblock{
+    padding-top: 50px;
+    height: 454px;
+    background-color: #f3f3f3;
+    &__info{
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        &-block{
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            text-align:center;
+            align-items: center;
+            &_title{
+                margin-top: 15px;
+                color: #ec644b;
+                font-size: 16px;
+                font-weight: 700;
+                font-style: normal;
+                letter-spacing: normal;
+                line-height: normal;
+            }
+            &_text{
+                margin-top: 10px;
+                min-width: 211px;
+                max-width: 250px;
+                color: #3a3a3a;
+                font-size: 14px;
+                font-weight: 300;
+                font-style: normal;
+                letter-spacing: normal;
+                line-height: 22px;
+            }
+            img{
+                max-width: 60px;
+            }
+        }
+    }
+}
