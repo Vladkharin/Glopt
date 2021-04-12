@@ -4,8 +4,6 @@ const sass        = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
 const autoprefixer = require('gulp-autoprefixer');
 const rename = require("gulp-rename");
-const imagemin = require('gulp-imagemin');
-const htmlmin = require('gulp-htmlmin');
 const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
@@ -20,13 +18,13 @@ gulp.task("copy-html", () => {
 });
 
 gulp.task('styles', function() {
-    return gulp.src("src/sass/**/*.+(scss|sass)")
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.LogError))
-        .pipe(rename({suffix: '.min', prefix: ''}))
-        .труба(autoprefixer())
-        .pipe(CleanCSS({совместимость: 'ie8'}))
-        .pipe(gulp.dest("dist/assets/css"))
-        .pipe(browsersync.stream())
+  return gulp.src("src/sass/**/*.+(scss|sass)")
+      .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+      .pipe(rename({suffix: '.min', prefix: ''}))
+      .pipe(autoprefixer())
+      .pipe(cleanCSS({compatibility: 'ie8'}))
+      .pipe(gulp.dest("dist/css"))
+      .pipe(browsersync.stream());
 });
 
 gulp.task("build-js", () => {
@@ -85,7 +83,7 @@ gulp.task("watch", () => {
     gulp.watch("src/sass/**/*.+(scss|sass|css)", gulp.parallel('styles'));
 });
 
-gulp.task("build", gulp.parallel("copy-html", "copy-assets", "build-js"));
+gulp.task("build", gulp.parallel("copy-html", "copy-assets", "build-js", 'styles'));
 
 gulp.task("build-prod-js", () => {
     return gulp.src("./src/js/main.js")
