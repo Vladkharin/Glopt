@@ -1,24 +1,32 @@
-const gulp        = require('gulp');
-const browserSync = require('browser-sync');
+"use strict";
+
 const sass        = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
 const autoprefixer = require('gulp-autoprefixer');
 const rename = require("gulp-rename");
 const imagemin = require('gulp-imagemin');
 const htmlmin = require('gulp-htmlmin');
+const gulp = require("gulp");
 const webpack = require("webpack-stream");
+const browsersync = require("browser-sync");
 
 const dist = "./dist/";
+// const dist = 'C:/MAMP/htdocs/test';// Ссылка на вашу папку на сервере
 
-gulp.task('server', function() {
+gulp.task("copy-html", () => {
+    return gulp.src("./src/*.html")
+                .pipe(gulp.dest(dist))
+                .pipe(browsersync.stream());
+});
 
-    browserSync({
-        server: {
-            baseDir: "dist"
-        }
-    });
-
-    gulp.watch("src/*.html").on('change', browserSync.reload);
+gulp.task('styles', function() {
+    return gulp.src("src/sass/**/*.+(scss|sass)")
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.LogError))
+        .pipe(rename({suffix: '.min', prefix: ''}))
+        .труба(autoprefixer())
+        .pipe(CleanCSS({совместимость: 'ie8'}))
+        .pipe(gulp.dest("dist/assets/css"))
+        .pipe(browsersync.stream())
 });
 
 gulp.task("build-js", () => {
@@ -50,8 +58,34 @@ gulp.task("build-js", () => {
                       }
                 }))
                 .pipe(gulp.dest(dist))
-                .on("end", browserSync.reload);
+                .on("end", browsersync.reload);
 });
+
+gulp.task("copy-assets", () => {
+    return gulp.src("./src/assets/**/*.*")
+                .pipe(gulp.dest(dist + "/assets"))
+                .on("end", browsersync.reload);
+});
+
+gulp.task("watch", () => {
+    browsersync.init({
+        server: {
+            baseDir: "./dist/",
+            serveStaticOptions: {
+                extensions: ["html"]
+            }
+        },
+		port: 4000,
+		notify: true
+    });
+    
+    gulp.watch("./src/*.html", gulp.parallel("copy-html"));
+    gulp.watch("./src/assets/**/*.*", gulp.parallel("copy-assets"));
+    gulp.watch("./src/js/**/*.js", gulp.parallel("build-js"));
+    gulp.watch("src/sass/**/*.+(scss|sass|css)", gulp.parallel('styles'));
+});
+
+gulp.task("build", gulp.parallel("copy-html", "copy-assets", "build-js"));
 
 gulp.task("build-prod-js", () => {
     return gulp.src("./src/js/main.js")
@@ -81,54 +115,4 @@ gulp.task("build-prod-js", () => {
                 .pipe(gulp.dest(dist));
 });
 
-gulp.task('styles', function() {
-    return gulp.src("src/sass/**/*.+(scss|sass)")
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-        .pipe(rename({suffix: '.min', prefix: ''}))
-        .pipe(autoprefixer())
-        .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest("dist/css"))
-        .pipe(browserSync.stream());
-});
-
-gulp.task('watch', function() {
-    gulp.watch("src/sass/**/*.+(scss|sass|css)", gulp.parallel('styles'));
-    gulp.watch("src/*.html").on('change', gulp.parallel('html'));
-    gulp.watch("src/js/**/*.js").on('change', gulp.parallel('scripts'));
-    gulp.watch("src/fonts/**/*").on('all', gulp.parallel('fonts'));
-    gulp.watch("src/icons/**/*").on('all', gulp.parallel('icons'));
-    gulp.watch("src/img/**/*").on('all', gulp.parallel('images'));
-});
-
-gulp.task('html', function () {
-    return gulp.src("src/*.html")
-        .pipe(htmlmin({ collapseWhitespace: true }))
-        .pipe(gulp.dest("dist/"));
-});
-
-gulp.task('scripts', function () {
-    return gulp.src("src/js/**/*.js")
-        .pipe(gulp.dest("dist/js"))
-        .pipe(browserSync.stream());
-});
-
-gulp.task('fonts', function () {
-    return gulp.src("src/fonts/**/*")
-        .pipe(gulp.dest("dist/fonts"))
-        .pipe(browserSync.stream());
-});
-
-gulp.task('icons', function () {
-    return gulp.src("src/icons/**/*")
-        .pipe(gulp.dest("dist/icons"))
-        .pipe(browserSync.stream());
-});
-
-gulp.task('images', function () {
-    return gulp.src("src/img/**/*")
-        .pipe(imagemin())
-        .pipe(gulp.dest("dist/img"))
-        .pipe(browserSync.stream());
-});
-
-gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'scripts', 'fonts', 'icons', 'html', 'images', 'build-js', 'build-prod-js'));
+gulp.task("default", gulp.parallel("watch", "build"));
