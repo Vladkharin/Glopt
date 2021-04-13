@@ -90,10 +90,134 @@
 /*!************************!*\
   !*** ./src/js/main.js ***!
   \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-console.log('hello');
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal */ "./src/js/modules/modal.js");
+/* harmony import */ var _modules_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/link */ "./src/js/modules/link.js");
+/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/slider */ "./src/js/modules/slider.js");
+
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  Object(_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])('.trigger', '.popup', '.popup__close');
+  Object(_modules_link__WEBPACK_IMPORTED_MODULE_1__["default"])('.link');
+  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_2__["default"])('.next', '.prev', '.eighthblock__slider-block');
+});
+
+/***/ }),
+
+/***/ "./src/js/modules/link.js":
+/*!********************************!*\
+  !*** ./src/js/modules/link.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function link(selector) {
+  const links = document.querySelectorAll(selector);
+  links.forEach(link => {
+    link.addEventListener('mouseover', () => {
+      link.style.color = '#ec644b';
+    });
+    link.addEventListener('mouseout', () => {
+      link.style.color = '#ffffff';
+    });
+  });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (link);
+
+/***/ }),
+
+/***/ "./src/js/modules/modal.js":
+/*!*********************************!*\
+  !*** ./src/js/modules/modal.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function modal(triggerSelector, modalSelector, closeSelector) {
+  const triggers = document.querySelectorAll(triggerSelector),
+        modal = document.querySelector(modalSelector),
+        close = document.querySelector(closeSelector);
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', openModal);
+  });
+  close.addEventListener('click', closeModal);
+
+  function openModal() {
+    modal.classList.add("show");
+    modal.classList.remove("hide");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    modal.classList.add("hide");
+    modal.classList.remove("show");
+    document.body.style.overflow = "";
+  }
+
+  document.addEventListener("keydown", event => {
+    if (event.code === "Escape" && modal.classList.contains("show")) {
+      closeModal(modalSelector);
+    }
+  });
+}
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (modal);
+
+/***/ }),
+
+/***/ "./src/js/modules/slider.js":
+/*!**********************************!*\
+  !*** ./src/js/modules/slider.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function slider(nextBtn, prevBtn, slide) {
+  const slides = document.querySelectorAll(slide),
+        next = document.querySelector(nextBtn),
+        prev = document.querySelector(prevBtn);
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function showSlides(n) {
+    if (n > slides.length) {
+      slideIndex = 1;
+    }
+
+    if (n < 1) {
+      slideIndex = slides.length;
+    }
+
+    slides.forEach(item => item.style.display = 'none');
+    slides[slideIndex - 1].style.display = 'flex';
+  }
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  prev.addEventListener('click', () => {
+    plusSlides(-1);
+  });
+  next.addEventListener('click', () => {
+    plusSlides(1);
+  });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (slider);
 
 /***/ })
 

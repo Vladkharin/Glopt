@@ -4,7 +4,9 @@
         margin-top: 20px;
         position: relative;
         &-block{
-            display: none;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
             &_header{
                 color: #3a3a3a;
                 font-size: 18px;
@@ -24,13 +26,7 @@
     }
 }
 
-.active{
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-
-#next{
+.next{
     position: absolute;
     top: 25px;
     left: 650px;
@@ -39,7 +35,7 @@
     outline: none;
 }
 
-#prev{
+.prev{
     position: absolute;
     top: 25px;
     right: 650px;

@@ -1,4 +1,19 @@
-@media (max-width: 1440px) {}
+@media (max-width: 1440px) {
+    .fifthblock{
+        &__img{
+            left:650px
+        }
+        &__button{
+            left: 630px
+        }
+    }
+    .popup{
+        &__block{
+            left: 575px;
+            top: 400px;
+        }
+    }
+}
 @media (max-width: 1024px) {}
 @media (max-width: 768px) {}
 @media (max-width:480px) {}
