@@ -12,7 +12,7 @@
 @import './modules/popup.scss';
 @import './modules/title.scss';
 @import './modules/button.scss';
-@import './modules/media.scss';
+
 
 .container{
     margin: 0 auto;
@@ -34,3 +34,5 @@ html{
 .show{
     display: block;
 }
+
+@import './modules/media.scss';
